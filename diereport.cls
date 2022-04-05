@@ -49,6 +49,9 @@
 % Para poder introducir comentarios
 \RequirePackage{comment}
 
+% Para incluir párrafos de muestra
+\RequirePackage{lipsum}
+
 % Enlaces a url's y archivos
 \RequirePackage{hyperref}
 \hypersetup{
