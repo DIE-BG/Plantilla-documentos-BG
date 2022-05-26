@@ -1,12 +1,11 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{diereport}%[Plantilla para documentos de presentación]
+\ProvidesClass{diereport}%[2017/03/22 Plantilla para documentos de presentación DIE BANGUAT]
 
 % Carga la clase 'article' con las opciones especificadas
 \LoadClass[letterpaper, 11pt, twoside]{article}
 
 % Configuración de idioma y codificación de archivos
 % Se asume que la codificación siempre será en UTF-8 y para documentos en castellano
-% Seleccionar el idioma con una de las dos siguientes opciones
 % \RequirePackage[spanish, es-tabla]{babel}
 \RequirePackage[english]{babel}
 
@@ -17,11 +16,15 @@
 % Requerido para el paquete Babel
 \RequirePackage{csquotes}
 
+% Para referencias con nombre, no es necesario si se utiliza hyperref
+%\RequirePackage{nameref}
+
 % Captions
 \RequirePackage[]{caption}
 \captionsetup{labelsep=period, labelfont=bf, textfont=it}
 \captionsetup[table]{belowskip=0pt, aboveskip=0pt}
 \captionsetup[figure]{belowskip=0pt, aboveskip=0pt}
+\captionsetup[algorithm]{labelsep=period, belowskip=0pt, aboveskip=0pt}
 
 % Para las tablas
 \RequirePackage{multicol}
@@ -57,13 +60,17 @@
 \hypersetup{
 	colorlinks=true,
 	allcolors=black,
-	%linkcolor=black,
-	%filecolor=magenta,      
-	%urlcolor=blue,
+	% linkcolor=black,
+	% filecolor=magenta,      
+	% urlcolor=blue,
+	% hyperfootnotes=false,
 	pdftitle={Economic Research Department - Bank of Guatemala}
 }
 \RequirePackage{url}
 
+% Multiple footnotes
+% \RequirePackage[multiple]{footmisc}
+% \renewcommand{\multfootsep}{,}
 
 % Configuración de párrafos
 % Definición del tamaño de letra
@@ -89,7 +96,10 @@
 % Configuración de bibliografía
 \RequirePackage[backend=biber,
 style=authoryear,
-sorting=nyt]{biblatex}
+sorting=nyt, 
+maxnames=2, minnames=1,maxbibnames=99]{biblatex}
+% maxnames y minnames configuran el número de autores para las citas en texto
+% maxbibnames=99 muestra todos los autores en la lista de referencias
 
 % Agregar la coma y espacio en las citas con paréntesis (Autor, año)
 \renewcommand*{\nameyeardelim}{\addcomma\space}
@@ -111,6 +121,9 @@ sorting=nyt]{biblatex}
 % Alineación de las ecuaciones
 \RequirePackage{amsmath}
 
+% Cómo mostrar las ecuaciones en el texto
+% \renewcommand{\theequation}{(\arabic{equation})}
+
 % -------------------------------------------
 %	ALGORITMOS
 % -------------------------------------------
@@ -122,6 +135,9 @@ sorting=nyt]{biblatex}
 % \floatname{algorithm}{Algoritmo}
 % \renewcommand{\listalgorithmname}{Lista de algoritmos}
 
+% English commands
+\renewcommand{\algorithmicrequire}{\textbf{Required:}}
+
 % Descomentar estos comandos para utilizar el paquete de algoritmos en español
 % \renewcommand{\algorithmicrequire}{\textbf{Entrada:}}
 % \renewcommand{\algorithmicensure}{\textbf{Asegurar:}}
@@ -131,6 +147,7 @@ sorting=nyt]{biblatex}
 % \renewcommand{\algorithmicif}{\textbf{si}}
 % \renewcommand{\algorithmicthen}{\textbf{entonces}}
 % \renewcommand{\algorithmicelse}{\textbf{si no}}
+
 % \renewcommand{\algorithmicfor}{\textbf{para}}
 % \renewcommand{\algorithmicforall}{\textbf{para todo}}
 % \renewcommand{\algorithmicdo}{\textbf{hacer}}
