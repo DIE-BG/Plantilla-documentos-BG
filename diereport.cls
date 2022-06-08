@@ -94,10 +94,13 @@
 % -------------------------------------------
 
 % Configuración de bibliografía
-\RequirePackage[backend=biber,
-style=authoryear,
-sorting=nyt, 
-maxnames=2, minnames=1,maxbibnames=99]{biblatex}
+\RequirePackage[
+	backend=biber,
+	style=authoryear,
+	sorting=nyt, 
+	maxnames=2, 
+	minnames=1,
+	maxbibnames=99]{biblatex}
 % maxnames y minnames configuran el número de autores para las citas en texto
 % maxbibnames=99 muestra todos los autores en la lista de referencias
 
@@ -160,72 +163,28 @@ maxnames=2, minnames=1,maxbibnames=99]{biblatex}
 % -------------------------------------------
 %	LISTINGS
 % -------------------------------------------
-% Paquetes necesarios para los códigos
+
+% % Title redefinition for captions
+% \renewcommand\lstlistingname{\textbf{Código}}
+% \renewcommand\lstlistlistingname{Códigos}
+
+% % For MATLAB code, uncomment the following lines
+% \RequirePackage{listings}
+% \RequirePackage{color}
+% % Configure MATLAB listing code style
+% \input{code/matlab_style.tex}
+% % Configurar el listing para el documento actual
+% \lstset{
+% 	style = custom_matlab 
+% 	frame = lines
+% }
+
+
+% % For Julia code, uncomment the following lines
 \RequirePackage{listings}
-\RequirePackage{color}
-% Configuración de listings (pendiente)
-%\input{conf/listingStyles}
-% Redefinición de titulos de caption
-\renewcommand\lstlistingname{\textbf{Código}}
-\renewcommand\lstlistlistingname{Códigos}
-
-% Definición de colores para Matlab (según el editor)
-\definecolor{matlab_keyword_color}{RGB}{0, 0, 255}
-\definecolor{matlab_string_color}{RGB}{160, 32, 240}
-\definecolor{matlab_comment_color}{RGB}{34, 139, 34}
-\definecolor{frame_numbers_color}{rgb}{0.5,0.5,0.5}
-\definecolor{matlab_identifier_color}{RGB}{0,0,0}
-
-% Definicion de estilo para Matlab
-\lstdefinestyle{custom_matlab}{
-	language=matlab,			% the language of the code
-	backgroundcolor=\color{white},        
-	basicstyle=\linespread{1}\small\ttfamily,	% the size of the fonts that are used for the code
-	% Configuración de colores
-	commentstyle=\color{matlab_comment_color},	% comment style
-	identifierstyle=\color{matlab_identifier_color},
-	keywordstyle=\mdseries\color{matlab_keyword_color},	% keyword style
-	numberstyle=\tiny\color{frame_numbers_color},	% the style that is used for the line-numbers
-	stringstyle=\color{matlab_string_color}, % string literal style 
-	captionpos=t,				% sets the caption-position to bottom
-	breakatwhitespace=false,	% sets if automatic breaks should only happen at whitespace
-	breaklines=true,			% sets automatic line breaking
-	morekeywords={},			% if you want to add more keywords to the set
-	deletekeywords={eps},		% delete keywords from the given language
-	escapeinside={\%*}{*)},		% if you want to add LaTeX within your code
-	framesep=3pt,
-	keepspaces=true,			% keeps spaces in text,       
-	numbers=left, 	% where to put the line-numbers; possible values are (none, left, right)
-	numbersep=5pt,	% how far the line-numbers are from the code
-	% if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-	rulecolor=\color{black}, 
-	% show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-	showspaces=false,                
-	% underline spaces within strings only
-	showstringspaces=false,          
-	% show tabs within strings adding particular underscores
-	showtabs=false,                  
-	stepnumber=1,	% the step between two line-numbers      
-	% sets default tabsize to 2 spaces
-	tabsize=2,                       
-	% lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-	extendedchars=true,      
-	% Support additional characters            
-	literate =	{á}{{\'a}}1  {é}{{\'e}}1  {í}{{\'i}}1 {ó}{{\'o}}1  {ú}{{\'u}}1 {Á}{{\'A}}1  {É}{{\'E}}1  {Í}{{\'I}}1 {Ó}{{\'O}}1  {Ú}{{\'U}}1 {à}{{\`a}}1  {è}{{\`e}}1  {ì}{{\`i}}1 {ò}{{\`o}}1  {ù}{{\`u}}1 {À}{{\`A}}1  {È}{{\'E}}1  {Ì}{{\`I}}1 {Ò}{{\`O}}1  {Ù}{{\`U}}1 {ä}{{\"a}}1  {ë}{{\"e}}1  {ï}{{\"i}}1 {ö}{{\"o}}1  {ü}{{\"u}}1 {Ä}{{\"A}}1  {Ë}{{\"E}}1  {Ï}{{\"I}}1 {Ö}{{\"O}}1  {Ü}{{\"U}}1 {â}{{\^a}}1  {ê}{{\^e}}1  {î}{{\^i}}1 {ô}{{\^o}}1  {û}{{\^u}}1 {Â}{{\^A}}1  {Ê}{{\^E}}1  {Î}{{\^I}}1 {Ô}{{\^O}}1  {Û}{{\^U}}1 {œ}{{\oe}}1  {Œ}{{\OE}}1  {æ}{{\ae}}1 {Æ}{{\AE}}1  {ß}{{\ss}}1 {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1  {å}{{\r a}}1 {Å}{{\r A}}1 {ñ}{{\~n}}1  {Ñ}{{\~N}}1  {¿}{{?`}}1  {¡}{{!`}}1,   
-}
-
-% Configurar el listing para el documento actual
-\lstset{
-	style = custom_matlab, 
-	frame = lines
-}
-
-% -------------------------------------------
-%	Para opciones a la clase
-% -------------------------------------------
-% Para opciones a la clase
-%\DeclareOption{english}{\renewcommand{\idioma}{english}}
-%\ProcessOptions \relax
+\RequirePackage{jlcode}
+% % Configure Julia listing code style
+\input{code/julia_style.tex}
 
 % -------------------------------------------
 %	Redefinición de la carátula para el documento

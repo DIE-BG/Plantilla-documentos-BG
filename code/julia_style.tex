@@ -1,0 +1,31 @@
+% Change the following line to change the code size inside code boxes
+\def\jlbasicfont{\ttfamily\footnotesize\selectfont}
+
+\lstnewenvironment{code}{\lstset{style=code}}{}
+\lstdefinestyle{code}{
+  language=Julia, 
+  showstringspaces=false,
+  % Comment the following three lines to remove colors
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  identifierstyle=\color[RGB]{0,102,0},
+  columns=fullflexible,
+  keepspaces=true
+}
+\newcommand{\codefile}[1]{\lstinputlisting[style=code]{#1}}
+\newcommand{\codelink}[1]{\lstinputlisting[style=code]{#1}
+  \noindent\begin{center}
+  \filename@parse{#1}
+  \href{\codeurl/\filename@base.\filename@ext}
+  {\textcolor{blue}{\codelinktext}}
+  \end{center}
+}
+\newcommand{\linkonly}[1]{
+  \protect\filename@parse{#1}
+  \href{\codeurl/\filename@base.\filename@ext}
+  {\textcolor{blue}{\tt[\protect\filename@base.\protect\filename@ext]}}
+}
+\newcommand{\inline}{\jlinl}
+
+% Check this link for an example
+% https://github.com/m3g/jlcode_example/blob/2e1ff896d77927809c0196e700099310eb373be3/example.tex
